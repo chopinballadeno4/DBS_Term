@@ -1,0 +1,28 @@
+.Entire {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TheaterName {
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.MovieType {
+    background-color: #ff7675;
+    color: #dfe6e9;
+    width: 100px;
+    height: 50px;
+    margin: 5px auto;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.MovieType:hover {
+    cursor: pointer;
+}

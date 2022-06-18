@@ -1,0 +1,47 @@
+.Entire {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #636e72;
+    background-color: #eccc68;
+}
+
+.movie_list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
+
+.movie_list_item {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    height: 120px;
+    width: 400px;
+    border-bottom: 1px solid #353b48;
+    margin: 10px 0;
+    background-color: beige;
+}
+
+.movie_button {
+    border: 0;
+    background-color: transparent;
+
+    background-color: #747d8c;
+}
+
+.date {
+    font-weight: bold;
+}
