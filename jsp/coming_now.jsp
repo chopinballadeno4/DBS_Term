@@ -19,7 +19,7 @@
             ResultSet rs = null ;
             Statement stmt = null;              
             try {
-                String sql = "SELECT MOVIE_NAME, OPENING_DATE, DIRECTOR, ACTOR, RUNNING_TIME, VIEWING_GRADE, MOVIE_ID, GENRE_ID, BOOKING_NUMBER, ACCUMULATE_NUMBER, MOVIE_INFO FROM MOVIE ORDER BY BOOKING_NUMBER DESC";                stmt = conn.createStatement();
+                String sql = "SELECT MOVIE_NAME, OPENING_DATE, DIRECTOR, ACTOR, RUNNING_TIME, VIEWING_GRADE, MOVIE_ID, GENRE_ID, BOOKING_NUMBER, ACCUMULATE_NUMBER, MOVIE_INFO FROM MOVIE ORDER BY BOOKING_NUMBER DESC";                
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery(sql);
                 while(rs.next()) {

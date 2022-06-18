@@ -26,3 +26,17 @@
 .MovieType:hover {
     cursor: pointer;
 }
+
+.Search {
+    width: 200px;
+    height: 30px;
+    border: 2px solid #1e272e;
+}
+
+.SearchBtn {
+    width: 50px;
+    height: 40px;
+    font-weight: bold;
+    background-color: #ffdd59;
+    border: 2px solid #1e272e;
+}
