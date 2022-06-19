@@ -32,17 +32,22 @@
                 //out.println(rs.next());
                 
                 while(rs.next()) {
-                    //String movieno = rs.getString("MOVIE_ID");
-            %>
+                    String tempRN = rs.getString("RN");
+                    String tempSC = rs.getString("SC");
+                    String tempROS = rs.getString("ROS");
+                    String tempPN = rs.getString("PN");
+                    String tempAABC = tempRN+"_"+tempSC+"_"+tempROS+"_"+tempPN ;
+                    out.println(tempAABC);
+                %>
                     <li>
-                        <form class="movie_list_item" name="register" action="several_info.jsp" method="POST">
-                            <input placeholder="asdf" class="movie_button" type="submit" name="no" value="상세정보">
+                        <form class="movie_list_item" name="register" action="booking_info.jsp" method="POST">
+                            <input class="movie_button" type="submit" name="no" value="<%= tempAABC%>">
                                 <span>상세정보 확인 ⬆ 클릭</span>
-                                <% 
-                                out.println(rs.getString("RN")); 
-                                out.println(rs.getString("SC")); 
-                                out.println(rs.getString("ROS"));
-                                out.println(rs.getString("PN"));
+                                <%
+                                out.println(tempRN); 
+                                out.println(tempSC); 
+                                out.println(tempROS);
+                                out.println(tempRN);
                                 %>
                             </input>
                         </form>
