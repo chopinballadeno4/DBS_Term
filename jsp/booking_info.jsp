@@ -12,6 +12,7 @@
         <span>예매하기</span>
     </header>
     <main class="main">
+        <%-- 예매를 하는 페이지이다. 영화 목록에서 클릭을하여 영화 정보를 확인한후 예매를 진행한다. --%>
             <%
             request.setCharacterEncoding("utf-8");
             String id = request.getParameter("no");
@@ -23,24 +24,34 @@
                 rs = stmt.executeQuery(sql);
                 //rs.next();
                 String [] data = id.split("_");
-                String Theaterroomtype = data[0];
+                String Roomname = data[0];
                 String Moviedate = data[1];
                 String remainseat = data[2];
                 String Theater = data[3];
+                String Title = data[4];
+                
+                session.setAttribute("Roomname",Roomname);
+                session.setAttribute("Moviedate",Moviedate);
+                session.setAttribute("remainseat",remainseat);
+                session.setAttribute("Theater",Theater);
+                session.setAttribute("Title",Title);
+
             %>
+            <%-- 전에 전달한 _ 로 연결한 부분을 나눈뒤 영화에 대한 정보를 뿌려준다. --%>
             <div class="movie_info">
-                <span>상영관타입: <%= Theaterroomtype %></span>
+                <span>상영관타입: <%= Roomname %></span>
                 <span>상영일: <%= Moviedate %></span>
                 <span>남은 좌석수: <%= remainseat %></span>
                 <span>극장명: <%= Theater %></span>
-            </div>
-            <form class="enroll_info" method="post" action="quiz2_check.jsp">
-                <p>청소년일반 : <input type="text" name="id" required></p>
-                <p>청소년프리미엄 : <input type="text" name="lname" required></p>
-                <p>성인일반 : <input type="text" name="id" required></p>
-                <p>성인프리미엄 : <input type="text" name="lname" required></p>
-                <p>현금 : <input type="text" name="id" required></p>
-                <p>포인트 : <input type="text" name="lname" required></p>
+            </div>            
+            <%-- 예매하는 페이지이다. 영화에 대한 정보를 뿌려준뒤 예매 의 입력을 받을 수 있게한다. --%>
+            <form class="enroll_info" method="post" action="booking_result.jsp">
+                <p>청소년일반 : <input type="text" name="CN" required></p>
+                <p>청소년프리미엄 : <input type="text" name="CP" required></p>
+                <p>성인일반 : <input type="text" name="AN" required></p>
+                <p>성인프리미엄 : <input type="text" name="AP" required></p>
+                <p>현금 : <input type="text" name="Cash" required></p>
+                <p>포인트 : <input type="text" name="Point" required></p>
                 <p><input class="button" type="submit" value="예매"></p>
             </form>
             <%          

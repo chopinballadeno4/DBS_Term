@@ -13,6 +13,7 @@
         <span>영화 상세정보</span>
     </header>
     <main class="main">
+            <%-- 영화 상세정보를 보는 페이지이다. 영화의 고유 no를 받아준다. --%>
             <%
             request.setCharacterEncoding("utf-8");
             String id = request.getParameter("no");
@@ -24,7 +25,7 @@
                 rs = stmt.executeQuery(sql);
                 rs.next();
                 %>
-                //!!!!!!!!!!!!!!!!!!!!
+                <%-- 해당 정보를 where문에 넣어서 쿼리문을 연결해준다. 연결한 뒤 sql에 넣어준다 --%>
                 <span>제목: <%out.println(rs.getString("MOVIE_NAME"));%></span>
                 <span>개봉일: <%out.println(rs.getString("OPENING_DATE"));%></span>
                 <span>감독: <%out.println(rs.getString("DIRECTOR"));%></span>
@@ -36,6 +37,7 @@
                 <span>예약자수: <%out.println(rs.getString("BOOKING_NUMBER"));%></span>
                 <span>누적 관객수: <%out.println(rs.getString("ACCUMULATE_NUMBER"));%></span>
                 <span>영화정보: <%out.println(rs.getString("MOVIE_INFO"));%></span>  
+                <%-- 가져온 정보들을 span을 통해 화면에 뿌려준다. --%>
             <%          
             } catch(SQLException ex) {
                 out.println("테이블의 정보를 불러오는 것을 실패하였습니다.<br>");

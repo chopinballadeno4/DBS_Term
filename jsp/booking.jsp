@@ -13,6 +13,7 @@
         <span>영화 예매</span>
     </header>
     <nav>
+        <%-- 영화 예매를 위한 페이지이다. 선택한 영화의 정보를 그대로 가져와주고 추가적인 정보들을 받아준다. --%>
         <ul class="movie_list" style="list-style: none"> 
             <%
             request.setCharacterEncoding("utf-8");
@@ -22,10 +23,8 @@
             ResultSet rs = null ;
             Statement stmt = null;              
             try {
-                out.println(theater);
-                out.println(title);
-                out.println(date);
-                String sql = "select A.ROOM_NAME as RN, A.SCREENING_CALENDAR as SC, A.REMAINING_OF_SEATS as ROS, A.POINT_NAME as PN from THEATERROOM A, (select B.MOVIE_ID as MI , B.MOVIE_NAME from MOVIE B where B.MOVIE_NAME ='영화4') where A.SCREENING_CALENDAR='2022-03-05' and A.POINT_NAME='대전극장' and A.MOVIE_ID=MI";                
+                 %> <%
+                String sql = "select A.ROOM_NAME as RN, A.SCREENING_CALENDAR as SC, A.REMAINING_OF_SEATS as ROS, A.POINT_NAME as PN from THEATERROOM A, (select B.MOVIE_ID as MI , B.MOVIE_NAME from MOVIE B where B.MOVIE_NAME ='"+title+"') where A.SCREENING_CALENDAR='"+date+"' and A.POINT_NAME='"+theater+"' and A.MOVIE_ID=MI";                
                 //String sql = "select ROOM_NAME from THEATERROOM";
                 stmt = conn.createStatement();
                 rs = stmt.executeQuery(sql);
@@ -36,13 +35,13 @@
                     String tempSC = rs.getString("SC");
                     String tempROS = rs.getString("ROS");
                     String tempPN = rs.getString("PN");
-                    String tempAABC = tempRN+"_"+tempSC+"_"+tempROS+"_"+tempPN ;
+                    String tempAABC = tempRN+"_"+tempSC+"_"+tempROS+"_"+tempPN+"_"+title ;
                     out.println(tempAABC);
                 %>
                     <li>
                         <form class="movie_list_item" name="register" action="booking_info.jsp" method="POST">
                             <input class="movie_button" type="submit" name="no" value="<%= tempAABC%>">
-                                <span>상세정보 확인 ⬆ 클릭</span>
+                                <span>예매 취소 ⬆ 클릭</span>
                                 <%
                                 out.println(tempRN); 
                                 out.println(tempSC); 

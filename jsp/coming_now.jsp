@@ -13,7 +13,8 @@
         <span>예매 순서</span>
     </header>
     <nav>
-        <ul class="movie_list" style="list-style: none"> 
+        <ul class="movie_list" style="list-style: none">
+            <%-- 예매 순서대로 정렬하여 출력해주는 jsp함수이다. 예매수를 내림차순으로 정렬해서 출력해준다.  --%>
             <%
             request.setCharacterEncoding("utf-8");
             ResultSet rs = null ;
@@ -25,6 +26,7 @@
                 while(rs.next()) {
                     String movieno = rs.getString("MOVIE_ID");
             %>
+            <%-- 무비의 고유 번호를 가져오기 위해 movieno에 넣어준다. --%>
             <li>
                 <form class="movie_list_item" name="register" action="several_info.jsp" method="POST">
                     <input placeholder="asdf" class="movie_button" type="submit" name="no" value=<%=rs.getString("MOVIE_ID")%>>
@@ -41,6 +43,7 @@
                     </input>
                 </form>
             </li>
+            <%-- 필요한 정보들을 while문을 통해 화면에 뿔려준다. --%>
             <%    
                 } 
             } catch(SQLException ex) {

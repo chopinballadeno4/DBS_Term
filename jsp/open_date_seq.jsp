@@ -14,6 +14,7 @@
     </header>
     <nav>
         <ul class="movie_list" style="list-style: none"> 
+            <%-- 개봉일 순서대로 정렬하기 위해 Order로 옵션을 준다. 필요한 필드들을 가져와서 필드로 선언해준다. --%>
             <%
             request.setCharacterEncoding("utf-8");
             ResultSet rs = null ;
@@ -25,7 +26,9 @@
                 while(rs.next()) {
                     String movieno = rs.getString("MOVIE_ID");
             %>
+            <%-- movie의 고유 number가 필요해서 movieno에 넣어준다. --%>
             <li>
+            <%-- form 태그를 통해 원하는 정보들을 검색하기 위한 movie number를 보내준다. --%>
                 <form class="movie_list_item" name="register" action="several_info.jsp" method="POST">
                     <input placeholder="asdf" class="movie_button" type="submit" name="no" value=<%=rs.getString("MOVIE_ID")%>>
                         <span>상세정보 확인 ⬆ 클릭</span>
@@ -38,6 +41,7 @@
                         out.println(rs.getString("VIEWING_GRADE"));
                         %>
                     </input>
+                    <%-- 원하는 정보들을 화면에 뿌려주기 위해 가져온 sql에서 필드에 값을 뿌려준다. while문을 통해 전체 데이터를 뿌려준다 --%>
                 </form>
             </li>
             <%    
